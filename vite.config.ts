@@ -3,12 +3,19 @@ import { defineConfig } from "vite";
 import viteSSRPlugin from "./plugins/vite.plugin";
 import UnoCSS from 'unocss/vite'
 export default defineConfig({
-  plugins: [react(), viteSSRPlugin(), UnoCSS()],
+  plugins: [react(
+    {
+      babel: {
+        plugins: [["babel-plugin-react-compiler"]],
+      }
+    }
+  ), viteSSRPlugin(), UnoCSS()],
   appType: "custom",
   environments: {
     ssr: {
       build: {
         outDir: "dist/ssr",
+        copyPublicDir: false,
         rollupOptions: {
           input: { index: "/src/index.tsx" },
         },
@@ -20,7 +27,7 @@ export default defineConfig({
       },
       build: {
         manifest: true,
-        outDir: "dist/client",
+        outDir: "dist/public",
         rollupOptions: {
           input: { index: "virtual:browser-entry" },
         },
@@ -39,7 +46,26 @@ export default defineConfig({
       output: {
         chunkFileNames: `assets/[hash].js`,
         assetFileNames: `assets/[name].[ext]`,
-      }
+      },
+      plugins: [
+        {
+          name: "remove-router-version",
+          async transform(code) {
+            return code
+              .replace(
+                "window.__reactRouterVersion",
+                'console.log("Tao không dùng next lỏd =))")//'
+              )
+              .replace("https://artplayer.org", "https://xemdi.fun")
+              .replace(/vite-rsc\/importer-resources/g, "edu.cheap.resources")
+              .replace(
+                /precedence: "vite-rsc\/client-reference"/g,
+                'precedence: "edu.cheap.reference"'
+              )
+              .replace(/--un-/g, "--eco-");
+          },
+        },
+      ],
     },
   },
   resolve: {

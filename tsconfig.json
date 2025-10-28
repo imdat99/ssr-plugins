@@ -11,6 +11,7 @@
     "types": ["vite/client"],
     "jsx": "react-jsx",
     "jsxImportSource": "react",
+    "baseUrl": "src",
     "paths": {
       "assetLink": ["./plugins/react/link.tsx"],
     }

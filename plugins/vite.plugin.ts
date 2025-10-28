@@ -138,6 +138,19 @@ export default function viteSSRPlugin(): PluginOption[] {
     //         }
     //     }
     // }
+    {
+      name: 'vite-plugin-check-css',
+      apply: 'build',
+      generateBundle(_, bundle) {
+        for (const [fileName, chunk] of Object.entries(bundle)) {
+        if (fileName.endsWith('.css')) {
+          let css = (chunk as any).source.toString();
+          css = css.replace(/--un-/g, '--eco-');
+          (chunk as any).source = css;
+        }
+      }
+      }
+    }
   ];
 }
 function createVirtualPlugin(name: string, load: Plugin["load"]): PluginOption {

@@ -8,6 +8,8 @@ import {
 } from "react-router";
 import { bootstrapModules } from "virtual:ssr-assets";
 import routes from "./routes";
+import { I18nextProvider } from "react-i18next";
+import { SWRConfig } from "swr";
 
 export const renderer = async (c: Context, next: Next) => {
 	const { query, dataRoutes } = createStaticHandler(routes);
@@ -15,11 +17,24 @@ export const renderer = async (c: Context, next: Next) => {
 	if (context instanceof Response) {
 		return context;
 	}
-	const ahihi = 12;
-	const nonce = "the-nonce";
+	const nonce = crypto.randomUUID();
 	const router = createStaticRouter(dataRoutes, context);
+	const routeKey = router.state.matches.at(-1)?.route.id || ''
+  	const loadedData = context.loaderData[routeKey] || {}
+	// const i18n = await i18nServer(c.req.raw);
 	const html = await renderToReadableStream(
-		_c(StaticRouterProvider, { context, router, nonce }),
+		<SWRConfig
+			value={{
+				revalidateOnMount: false,
+				provider: () => new Map(),
+				...loadedData,
+			}}
+		>
+			<I18nextProvider i18n={c.get("i18n-instance")}>
+				<StaticRouterProvider context={context} router={router} nonce={nonce} />
+			</I18nextProvider>
+		</SWRConfig>
+		,
 		{
 			bootstrapModules,
 			nonce,
@@ -29,6 +44,41 @@ export const renderer = async (c: Context, next: Next) => {
 		headers: {
 			"content-type": "text/html;charset=utf-8",
 			"Content-Encoding": "Identity",
+			"nonce": nonce,
 		},
 	});
 };
+// export async function i18nServer(request: Request): Promise<i18n> {
+// 	// console.log("request", request)
+// 	const context = await new Promise<RouterContextProvider>(
+//     (resolve) => {
+//       // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+//       const routerContextProvider: any = {
+//         get: (key: string) => {
+//           // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+//           return (routerContextProvider as any)[key];
+//         },
+//       };
+//       i18nextMiddleware(
+//         {
+//           request,
+//           context: {
+//             // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+//             set: (key: string, value: any) => {
+//               Object.assign(routerContextProvider, {
+//                 [key]: value,
+//               });
+//             },
+//           } as RouterContextProvider,
+//           params: {},
+//         },
+//         (() => {
+//           resolve(routerContextProvider);
+//           // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+//         }) as any
+//       );
+//     }
+//   )
+//   console.log("context", context)
+//   return getInstance(context);
+// };

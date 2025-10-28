@@ -1,0 +1,49 @@
+{
+  "error": {
+    "title": "Oops! Something went wrong.",
+    "message": "We're having trouble loading this page. Please try again later.",
+    "reloadButton": "Reload Page"
+  },
+  "select": {
+    "placeholder": "Select an option",
+    "clearSelection": "Clear selection",
+    "searchPlaceholder": "Search options...",
+    "noOptions": "No options found"
+  },
+  "app": {
+    "title": "Rsbuild with React",
+    "description": "Start building amazing things with Rsbuild.",
+    "language": {
+      "title": "Language",
+      "description": "Select your preferred language.",
+      "vi": "Vietnamese",
+      "en": "English"
+    },
+    "theme": "Theme"
+  },
+  "policy": {
+    "title": "Privacy Policy",
+    "description": "We are committed to protecting your privacy. Please read our privacy policy for more details.",
+    "acceptButton": "Accept",
+    "declineButton": "Decline"
+  },
+  "footer": {
+    "text": "© {{year}} Xemdi. All rights reserved."
+  },
+  "helper": {
+    "title": "Help",
+    "description": "If you need assistance, please contact us via email or visit our support page.",
+    "contactEmail": "Support Email",
+    "supportPage": "Support Page",
+    "contactButton": "Contact Us",
+    "visitButton": "Visit Support Page"
+  },
+  "loading": {
+    "message": "Loading, please wait..."
+  },
+   "sendRequest": {
+    "title": "Send Request",
+    "success": "Request sent successfully!",
+    "error": "An error occurred while sending the request. Please try again."
+  }
+}

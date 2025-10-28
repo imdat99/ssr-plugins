@@ -1,12 +1,11 @@
-import { createElement as _c } from 'react';
+import { jsx } from "react/jsx-runtime";
 import { Outlet, redirect, type RouteObject } from 'react-router';
 const routes: RouteObject[] = [
   {
-    ErrorBoundary: () => _c('div', { className: 'p-6' }, 'Something went wrong!'),
-    HydrateFallback: () => _c('div', { className: 'p-6' }, 'Loading...'),
-    lazy: async () => ({
-        Component: (await import('./root')).default,
-    }),
+    id: "root",
+    // ErrorBoundary: () => jsx('div', { className: 'p-6' }, 'Something went wrong!'),
+    HydrateFallback: () => jsx('div', { className: 'p-6' }, 'Loading...'),
+    lazy: () => import('./root'),
     children: [
       {
         path: "",
@@ -22,7 +21,7 @@ const routes: RouteObject[] = [
       },
       {
         path: '*',
-        Component: () => _c('div', { className: 'p-6' }, '404 Not Found'),
+        Component: () => jsx('div', { className: 'p-6' }, '404 Not Found'),
       },
     ],
   },
