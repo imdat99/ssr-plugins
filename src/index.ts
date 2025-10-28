@@ -9,6 +9,7 @@ const app = new Hono()
 app.use(cors(), rpcServer);
 app.use(serveStatic({ root: './public' }))
 app.use(i18nHonoMiddleware, renderer)
+console.log("app running");
 // app.get('/', (c) => {
 //   return c.render(<h1>Hello!</h1>)
 // })
