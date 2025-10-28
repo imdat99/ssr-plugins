@@ -9,6 +9,8 @@
     "start": "bun run dist/index.js"
   },
   "dependencies": {
+    "@hiogawa/tiny-rpc": "^0.2.3-pre.18",
+    "@hiogawa/utils": "^1.7.0",
     "@hiogawa/utils-node": "^0.0.2",
     "clsx": "^2.1.1",
     "hono": "^4.10.3",
@@ -23,6 +25,7 @@
     "remix-i18next": "^7.4.2",
     "swr": "^2.3.6",
     "tailwind-merge": "^3.3.1",
+    "zod": "^4.1.12",
     "zustand": "^5.0.8"
   },
   "devDependencies": {
@@ -32,7 +35,8 @@
     "@vitejs/plugin-react": "^5.1.0",
     "babel-plugin-react-compiler": "^1.0.0",
     "unocss": "^66.5.4",
-    "vite": "npm:rolldown-vite@latest"
+    "vite": "npm:rolldown-vite@latest",
+    "vite-tsconfig-paths": "^5.1.4"
   },
   "prettier": {
     "tabWidth": 4

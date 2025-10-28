@@ -26,7 +26,7 @@ export default function viteSSRPlugin(): PluginOption[] {
               res.end();
             }
             try {
-              const mod: any = await ssrRunner.import("/src/index.tsx");
+              const mod: any = await ssrRunner.import("/src/index.ts");
               webToNodeHandler((mod as any).default.fetch)(
                 req,
                 res,

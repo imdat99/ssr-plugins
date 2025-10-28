@@ -2,6 +2,7 @@ import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import viteSSRPlugin from "./plugins/vite.plugin";
 import UnoCSS from 'unocss/vite'
+import tsconfigPaths from 'vite-tsconfig-paths'
 export default defineConfig({
   plugins: [react(
     {
@@ -9,7 +10,7 @@ export default defineConfig({
         plugins: [["babel-plugin-react-compiler"]],
       }
     }
-  ), viteSSRPlugin(), UnoCSS()],
+  ),tsconfigPaths(), viteSSRPlugin(), UnoCSS()],
   appType: "custom",
   environments: {
     ssr: {
@@ -17,7 +18,7 @@ export default defineConfig({
         outDir: "dist/ssr",
         copyPublicDir: false,
         rollupOptions: {
-          input: { index: "/src/index.tsx" },
+          input: { index: "/src/index.ts" },
         },
       },
     },

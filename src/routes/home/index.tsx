@@ -1,5 +1,6 @@
 import React from 'react'
 import Footer from './Footer';
+import { client } from 'api/rpcclient';
 
 const Home = () => {
   const [count, setCount] = React.useState(0);
@@ -16,7 +17,19 @@ const Home = () => {
 
       <h1>Home</h1>
       <p>Count: {count}</p>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <div className='btn-group'>
+        <button className='btn btn-info' onClick={() => {
+        client.incrementCounter({ delta: 1 }).then((newCount) => {
+          setCount(newCount);
+        });
+      }}>Increment</button>
+      <button className='btn btn-secondary' onClick={() => {
+        client.getCounter().then((currentCount) => {
+          setCount(currentCount);
+        });
+      }}>Refresh</button>
+      </div>
+      
     </div>
     </main>
     
