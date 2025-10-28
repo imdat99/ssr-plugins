@@ -45,5 +45,6 @@
     "title": "Gửi yêu cầu",
     "success": "Yêu cầu đã được gửi thành công!",
     "error": "Đã xảy ra lỗi khi gửi yêu cầu. Vui lòng thử lại."
-  }
+  },
+  "all_rights_reserved": "Bảo lưu mọi quyền."
 }
