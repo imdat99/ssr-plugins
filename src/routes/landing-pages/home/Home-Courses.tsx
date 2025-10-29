@@ -19,7 +19,7 @@ const HomeCourses = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
                     data?.map((course) => (
-                        <Link to={course.slug} key={course.id} className="bg-white rounded-xl overflow-hidden border border-gray-200 hover:(shadow-[.25rem_.25rem_0] shadow-primary/40 border-primary) transition duration-300">
+                        <Link to={course.slug} key={course.id} className="bg-white rounded-xl overflow-hidden border border-gray-200 hover:(shadow-[.25rem_.25rem_0] shadow-primary-dark/60 border-primary) transition duration-300">
                             <img src={course.bgImg} alt={course.title} className="h-48 w-full object-cover" />
                             <div className="p-6">
                                 <div className="flex justify-between items-center mb-4">

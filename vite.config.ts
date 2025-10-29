@@ -21,6 +21,9 @@ export default defineConfig({
           input: { index: "/src/index.ts" },
         },
       },
+      resolve: {
+        conditions: ["react-server"],
+      }
     },
     client: {
       optimizeDeps: {

@@ -48,6 +48,7 @@ export default defineConfig({
           DEFAULT: "#fd7906",
           light: "#fbb06f",
           inverse: "#4b5675",
+          dark: "#b34700",
         },
         dark: {
           DEFAULT: "#161f2d",
