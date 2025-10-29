@@ -1,10 +1,11 @@
 import React, { lazy, Suspense } from 'react'
 import HomeHeroSection from './Home-hero'
 import HomeCTA from './Home-CTA'
+import { client } from 'api/rpcclient'
 const HomeFeatures = lazy(() => import('./Home-features'))
 const HomeCourses = lazy(() => import('./Home-Courses'))
 const HomeTestimonials = lazy(() => import('./Home-Testimonials'))
-const Home = () => {
+export const Component = () => {
   return (
     <>
       <HomeHeroSection />
@@ -43,4 +44,11 @@ const SectionSkeleton = () => {
     </div>
   )
 }
-export default Home
+
+export async function loader() {
+  return import.meta.env.SSR ? {
+    fallback: {
+      getHomeCourses: await client.getHomeCourses(),
+    },
+  } : {};
+}

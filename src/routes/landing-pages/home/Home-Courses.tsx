@@ -1,18 +1,20 @@
 import { client } from 'api/rpcclient'
 import { Link } from 'react-router'
 import useSWR from 'swr'
+import { useTranslation } from 'react-i18next'
 
 const HomeCourses = () => {
+    const { t } = useTranslation('home')
     const {data, isLoading, error} = useSWR("getHomeCourses", client.getHomeCourses)
   return (
-    <section id="courses" className="py-16 bg-white">
+    <section id="courses" className="py-16 bg-white" suppressHydrationWarning>
         <div className="container mx-auto px-4">
             <div className="text-center mb-16">
-                <h2 className="text-3xl font-bold mb-4">Khóa học nổi bật</h2>
-                <p className="text-gray-600 max-w-2xl mx-auto">Khám phá các khóa học phổ biến nhất của chúng tôi.</p>
+                <h2 className="text-3xl font-bold mb-4">{t('courses_title')}</h2>
+                <p className="text-gray-600 max-w-2xl mx-auto">{t('courses_desc')}</p>
             </div>
             {isLoading && (
-                <div className="text-center">Đang tải khóa học...</div>
+                <div className="text-center">{t('courses_loading')}</div>
             )}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
@@ -28,7 +30,7 @@ const HomeCourses = () => {
                                 <p className="text-gray-600 mb-4">{course.description}</p>
                                 <div className="flex justify-between items-center">
                                     <span className="text-primary font-semibold">{course.price}</span>
-                                    <button className="btn text-primary">Xem chi tiết</button>
+                                    <button className="btn text-primary">{t('courses_detail')}</button>
                                 </div>
                             </div>
                         </div>
@@ -37,7 +39,7 @@ const HomeCourses = () => {
             </div>
             
             <div className="text-center mt-12">
-                <Link to="/courses" className="btn btn-lg btn-outline-primary transition ease-linear hover:scale-105">Xem tất cả khóa học</Link>
+                <Link to="/courses" className="btn btn-lg btn-outline-primary transition ease-linear hover:scale-105">{t('courses_all')}</Link>
             </div>
         </div>
     </section>

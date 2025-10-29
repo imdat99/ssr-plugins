@@ -3,8 +3,6 @@ import { createElement as _c } from "react";
 const routes: RouteObject[] = [
 	{
 		id: "root",
-		// ErrorBoundary: () => jsx('div', { className: 'p-6' }, 'Something went wrong!'),
-		HydrateFallback: () => _c("div", { className: "p-6" }, "Loading..."),
 		lazy: () => import("./root"),
 		children: [
 			{
@@ -14,15 +12,11 @@ const routes: RouteObject[] = [
 					{
 						// index: true,
 						path: "",
-						lazy: async () => ({
-							Component: (await import("./landing-pages")).default,
-						}),
+						lazy: () => import("./landing-pages"),
 						children: [
 							{
 								index: true,
-								lazy: async () => ({
-									Component: (await import("./landing-pages/home")).default,
-								}),
+								lazy: () => import("./landing-pages/home"),
 							},
 						],
 					},

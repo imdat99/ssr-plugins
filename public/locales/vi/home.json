@@ -1,4 +1,40 @@
 {
-  "title": "Chào thế giới",
-  "description": "Đây là trang chủ của ứng dụng Rsbuild với React. Bạn có thể bắt đầu xây dựng ứng dụng của mình từ đây."
+  "courses_title": "Khóa học nổi bật",
+  "courses_desc": "Khám phá các khóa học phổ biến nhất của chúng tôi.",
+  "courses_loading": "Đang tải khóa học...",
+  "courses_detail": "Xem chi tiết",
+  "courses_all": "Xem tất cả khóa học",
+
+  "cta_title": "Sẵn sàng bắt đầu hành trình học tập của bạn?",
+  "cta_desc": "Đăng ký ngay hôm nay để nhận ưu đãi đặc biệt và bắt đầu nâng cao kỹ năng của bạn.",
+  "cta_register": "Đăng ký ngay",
+  "cta_contact": "Liên hệ tư vấn",
+
+  "features_title": "Tại sao chọn EduLearn?",
+  "features_desc": "Chúng tôi cung cấp những tính năng tốt nhất để đảm bảo trải nghiệm học tập trực tuyến hiệu quả nhất cho bạn.",
+  "features_1_title": "Bài giảng video chất lượng cao",
+  "features_1_desc": "Học với video chất lượng cao, rõ nét với nội dung được cập nhật thường xuyên.",
+  "features_2_title": "Giảng viên chuyên nghiệp",
+  "features_2_desc": "Học từ các chuyên gia hàng đầu trong lĩnh vực với nhiều năm kinh nghiệm.",
+  "features_3_title": "Chứng chỉ hoàn thành",
+  "features_3_desc": "Nhận chứng chỉ sau khi hoàn thành khóa học để nâng cao giá trị hồ sơ của bạn.",
+
+  "hero_title": "Học tập trực tuyến hiệu quả, mọi lúc mọi nơi",
+  "hero_desc": "EduLearn mang đến cho bạn những khóa học chất lượng cao với các chuyên gia hàng đầu. Nâng cao kỹ năng và phát triển sự nghiệp của bạn ngay hôm nay.",
+  "hero_start": "Bắt đầu học ngay",
+  "hero_view_courses": "Xem khóa học",
+  "hero_courses": "Khóa học",
+  "hero_students": "Học viên",
+
+  "testimonials_title": "Học viên nói gì về chúng tôi",
+  "testimonials_desc": "Những phản hồi tích cực từ học viên đã trải nghiệm các khóa học của EduLearn.",
+  "testimonials_1_name": "Trần Ngọc Anh",
+  "testimonials_1_course": "Học viên khóa Lập trình Web",
+  "testimonials_1_feedback": "Khóa học rất chi tiết và dễ hiểu. Tôi đã có thể xây dựng được website đầu tiên của mình chỉ sau 2 tháng học.",
+  "testimonials_2_name": "Lê Minh Đức",
+  "testimonials_2_course": "Học viên khóa Phân tích dữ liệu",
+  "testimonials_2_feedback": "Giảng viên rất nhiệt tình và có chuyên môn cao. Tôi đã ứng dụng được kiến thức từ khóa học vào công việc hiện tại.",
+  "testimonials_3_name": "Phạm Hồng Nhung",
+  "testimonials_3_course": "Học viên khóa Thiết kế UI/UX",
+  "testimonials_3_feedback": "Tài liệu học tập phong phú và cập nhật. Tôi đặc biệt thích phần thực hành với các dự án thực tế."
 }

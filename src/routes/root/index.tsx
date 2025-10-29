@@ -11,6 +11,10 @@ const Root: React.FC = () => {
           name="viewport"
           content="width=device-width, initial-scale=1.0"
         />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet"
+        ></link>
         <link rel="stylesheet" href="/assets/index.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></link>
       </head>
@@ -21,5 +25,6 @@ const Root: React.FC = () => {
   )
 }
 export { ErrorBoundary } from "./ErrorBoundary";
+export { HydrateFallback } from "./HydrateFallback";
 export { Root as Component }
 export default Root

@@ -1,4 +1,40 @@
 {
-  "title": "Hello world",
-  "description": "This is the home page of the Rsbuild with React application. You can start building your application from here."
+  "courses_title": "Featured Courses",
+  "courses_desc": "Discover our most popular courses.",
+  "courses_loading": "Loading courses...",
+  "courses_detail": "View details",
+  "courses_all": "View all courses",
+
+  "cta_title": "Ready to start your learning journey?",
+  "cta_desc": "Register today to receive special offers and start improving your skills.",
+  "cta_register": "Register now",
+  "cta_contact": "Contact for advice",
+
+  "features_title": "Why choose EduLearn?",
+  "features_desc": "We provide the best features to ensure the most effective online learning experience for you.",
+  "features_1_title": "High-quality video lectures",
+  "features_1_desc": "Learn with high-quality, clear videos with regularly updated content.",
+  "features_2_title": "Professional instructors",
+  "features_2_desc": "Learn from top experts in the field with years of experience.",
+  "features_3_title": "Completion certificate",
+  "features_3_desc": "Receive a certificate after completing the course to enhance your profile value.",
+
+  "hero_title": "Effective online learning, anytime, anywhere",
+  "hero_desc": "EduLearn brings you high-quality courses with top experts. Improve your skills and advance your career today.",
+  "hero_start": "Start learning now",
+  "hero_view_courses": "View courses",
+  "hero_courses": "Courses",
+  "hero_students": "Students",
+
+  "testimonials_title": "What our students say about us",
+  "testimonials_desc": "Positive feedback from students who have experienced EduLearn's courses.",
+  "testimonials_1_name": "Tran Ngoc Anh",
+  "testimonials_1_course": "Web Programming Course Student",
+  "testimonials_1_feedback": "The course is very detailed and easy to understand. I was able to build my first website after just 2 months of learning.",
+  "testimonials_2_name": "Le Minh Duc",
+  "testimonials_2_course": "Data Analysis Course Student",
+  "testimonials_2_feedback": "The instructor is very enthusiastic and highly qualified. I have applied the knowledge from the course to my current job.",
+  "testimonials_3_name": "Pham Hong Nhung",
+  "testimonials_3_course": "UI/UX Design Course Student",
+  "testimonials_3_feedback": "The learning materials are rich and up-to-date. I especially like the practical part with real projects."
 }

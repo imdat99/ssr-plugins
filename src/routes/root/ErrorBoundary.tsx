@@ -4,6 +4,7 @@ import {
 } from "react-router";
 export function ErrorBoundary() {
   const error = useRouteError();
+  console.log("error.statusText:", error);
   let status = 500;
   let message = "An unexpected error occurred.";
 

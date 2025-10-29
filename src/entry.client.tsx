@@ -38,10 +38,17 @@ if (typeof window === 'object' && lazyMatches && lazyMatches?.length > 0) {
     )
   }
   const router = createBrowserRouter(routes);
+  const routeKey = router.state.matches.at(-1)?.route.id || ''
+  const loadedData = router.state.loaderData[routeKey] || {}
   return (
     <I18nextProvider i18n={i18n}>
         <SWRConfig
-          value={{ provider: () => new Map() }}
+          value={{ 
+            revalidateOnFocus: false,
+            revalidateIfStale: false,
+            revalidateOnReconnect: true,
+            ...loadedData 
+          }}
         >
           <RouterProvider router={router} />
         </SWRConfig>

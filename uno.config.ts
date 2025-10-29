@@ -72,5 +72,14 @@ export default defineConfig({
       full: "9999px",
     },
   },
+  preflights: [
+    {
+      getCSS: () => `
+      :root {
+        --font-sans: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+      }
+      `
+    }
+  ]
   // ...UnoCSS options
 })
