@@ -26,7 +26,8 @@ export const renderer = async (c: Context, next: Next) => {
 		<SWRConfig
 			value={{
 				revalidateOnMount: false,
-				provider: () => new Map(),
+				revalidateIfStale: false,
+				// provider: () => new Map(),
 				...loadedData,
 			}}
 		>

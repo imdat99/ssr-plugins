@@ -19,7 +19,7 @@ const HomeCourses = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
                     data?.map((course) => (
-                        <div key={course.id} className="bg-white rounded-xl overflow-hidden border border-gray-200 hover:(shadow-[.25rem_.25rem_0] shadow-primary/40 border-primary) transition duration-300">
+                        <Link to={course.slug} key={course.id} className="bg-white rounded-xl overflow-hidden border border-gray-200 hover:(shadow-[.25rem_.25rem_0] shadow-primary/40 border-primary) transition duration-300">
                             <img src={course.bgImg} alt={course.title} className="h-48 w-full object-cover" />
                             <div className="p-6">
                                 <div className="flex justify-between items-center mb-4">
@@ -29,11 +29,15 @@ const HomeCourses = () => {
                                 <h3 className="text-xl font-semibold mb-3">{course.title}</h3>
                                 <p className="text-gray-600 mb-4">{course.description}</p>
                                 <div className="flex justify-between items-center">
-                                    <span className="text-primary font-semibold">{course.price}</span>
-                                    <button className="btn text-primary">{t('courses_detail')}</button>
+                                    {/* <span className="text-primary font-semibold">{course.price}</span> */}
+                                    <button onClick={(e) => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        console.log("click: ", course.slug)
+                                    }} className="text-primary cursor-pointer">{t('courses_detail')}</button>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     ))
                 }
             </div>

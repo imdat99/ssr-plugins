@@ -52,6 +52,7 @@ const routes = {
 				price: "1.200.000 VNĐ",
 				icon: "fas fa-code",
 				bgImg: "https://placehold.co/600x400/EEE/31343C?font=playfair-display&text=Web%20Fullstack",
+				slug: "lap-trinh-web-fullstack",
 			},
 			{
 				id: 2,
@@ -63,6 +64,7 @@ const routes = {
 				price: "900.000 VNĐ",
 				icon: "fas fa-chart-bar",
 				bgImg: "https://placehold.co/600x400/EEE/31343C?font=playfair-display&text=Data%20Analysis",
+				slug: "phan-tich-du-lieu-voi-python",
 			},
 			{
 				id: 3,
@@ -74,6 +76,7 @@ const routes = {
 				price: "800.000 VNĐ",
 				icon: "fas fa-paint-brush",
 				bgImg: "https://placehold.co/600x400/EEE/31343C?font=playfair-display&text=UI/UX%20Design",
+				slug: "thiet-ke-ui-ux-chuyen-nghiep",
 			},
 		];
 		return listCourses;

@@ -16,7 +16,9 @@ const HomeTestimonials = () => {
                         Array.from({ length: 3 }).map((_, index) => (
                             <div key={index} className="bg-light p-6 rounded-xl">
                                 <div className="flex items-center mb-4">
-                                    <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white font-bold mr-4">LM</div>
+                                    <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-4">
+                                        <img src={`https://randomuser.me/api/portraits/men/31.jpg`} alt={t(`testimonials_${index+1}_name`)} className="w-11 h-11 rounded-full object-cover" />
+                                    </div>
                                     <div>
                                         <h4 className="font-semibold">{t(`testimonials_${index+1}_name`)}</h4>
                                         <p className="text-gray-500 text-sm">{t(`testimonials_${index+1}_course`)}</p>

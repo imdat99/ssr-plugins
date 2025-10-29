@@ -8,11 +8,11 @@ const HomeHeroSection = () => {
     <section id="home" className="py-12 md:py-16">
         <div className="container mx-a grid grid-cols-1 lg:grid-cols-2 items-center px-4">
             <div className="col-span-1 mb-10 md:mb-0">
-                <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('hero_title')}</h1>
+                <h1 className="text-4xl md:text-5xl font-bold mb-6 font-serif">{t('hero_title')}</h1>
                 <p className="text-lg mb-8 text-gray-500">{t('hero_desc')}</p>
                 <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                     <button className="btn btn-primary btn-lg justify-center">{t('hero_start')}</button>
-                    <button className="btn btn-outline-secondary btn-lg justify-center">{t('hero_view_courses')}</button>
+                    <button className="btn btn-outline-secondary btn-lg justify-center">{t('hero_view_demo')}</button>
                 </div>
             </div>
             <div className="col-span-1 justify-center hidden md:flex relative">
