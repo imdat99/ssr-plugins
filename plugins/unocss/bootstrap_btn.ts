@@ -113,11 +113,12 @@ export const presetBootstrapBtn = (): Preset => ({
         [symbols.selector]: selector => `${selector}:hover`,
         background: `color-mix(in srgb, ${color} 90%, black)`,
         "border-color": `color-mix(in srgb, ${color} 85%, black)`,
+        "box-shadow": `.25rem .25rem 0 color-mix(in srgb, ${color} 55%, white 15%)`,
       },
       {
         [symbols.selector]: selector => `${selector}:focus`,
         outline: `0`,
-        "box-shadow": `0 0 0 .225rem color-mix(in srgb, ${color} 55%, white 15%)`,
+        "box-shadow": `.25rem .25rem 0 color-mix(in srgb, ${color} 55%, white 15%)`,
       },
       {
         [symbols.selector]: selector => `${selector}:disabled`,
@@ -142,12 +143,14 @@ export const presetBootstrapBtn = (): Preset => ({
         'color': color,
         'border-color': color,
         'background-color': 'transparent',
+        'transition': 'all 0.15s ease-in-out',
       },
       {
         [symbols.selector]: selector => `${selector}:hover`,
-        color: '#fff',
-        "background-color": color,
-        "border-color": color,
+        // color: '#fff',
+        // "background-color": color,
+        // "border-color": color,
+        'box-shadow': `0.25rem .25rem 0 ${color}`,
       },
     ]
     }],

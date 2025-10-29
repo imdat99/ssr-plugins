@@ -2,7 +2,7 @@ import React from 'react'
 
 const Header = () => {
   return (
-    <header className="sticky top-0 z-50 border-b">
+    <header className="sticky top-0 z-50 border-b border-b-gray-200 bg-white">
         <div className="container mx-auto py-2 flex justify-between items-center">
             <div className="flex items-center space-x-2">
                 <span className="text-xl font-bold">EZ-Lms</span>

@@ -9,7 +9,7 @@ const Home = () => {
     return (
         <>
             <Header />
-            <main className='flex-grow container mx-auto'>
+            <main className='flex-grow'>
                 <Outlet />
             </main>
             {/* <main className='flex-grow container mx-auto p-4'>

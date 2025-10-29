@@ -51,6 +51,10 @@ export default defineConfig({
           DEFAULT: "#161f2d",
           light: "#1e2129",
         },
+        white: {
+          DEFAULT: "#ffffff",
+          light: "#f8f9fa",
+        }
       },
       boxShadow: {
         "primary-box": "2px 2px 10px #aff6b8",
@@ -59,7 +63,7 @@ export default defineConfig({
     radius: {
       none: "0px",
       sm: "0.125rem", // 2px
-      DEFAULT: "0rem", // 4px (áp dụng cho .rounded)
+      DEFAULT: "0.25rem", // 4px (áp dụng cho .rounded)
       md: "0.375rem", // 6px
       lg: "0.5rem", // 8px
       xl: "0.75rem", // 12px

@@ -12,8 +12,9 @@ const Root: React.FC = () => {
           content="width=device-width, initial-scale=1.0"
         />
         <link rel="stylesheet" href="/assets/index.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></link>
       </head>
-      <body className="font-sans bg-gray-50 text-gray-800 antialiased flex flex-col min-h-screen">
+      <body className="font-sans bg-gray-50 text-gray-900 antialiased flex flex-col min-h-screen">
         <Outlet />
       </body>
     </html>

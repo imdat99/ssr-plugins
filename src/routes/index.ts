@@ -15,12 +15,14 @@ const routes: RouteObject[] = [
 						// index: true,
 						path: "",
 						lazy: async () => ({
-							Component: (await import("./home")).default,
+							Component: (await import("./landing-pages")).default,
 						}),
 						children: [
 							{
 								index: true,
-								Component: () => _c("div", { className: "p-6" }, "Welcome to EZ LMS!"),
+								lazy: async () => ({
+									Component: (await import("./landing-pages/home")).default,
+								}),
 							},
 						],
 					},
