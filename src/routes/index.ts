@@ -6,7 +6,6 @@ const routes: RouteObject[] = [
 		lazy: () => import("./root"),
 		children: [
 			{
-				path: "",
 				Component: Outlet,
 				children: [
 					{
@@ -23,6 +22,23 @@ const routes: RouteObject[] = [
 					{
 					},
 				],
+			},
+			{
+				lazy: () => import("./auth"),
+				children: [
+					{
+						path: "login",
+						lazy: () => import("./auth/login"),
+					},
+					{
+						path: "register",
+						lazy: () => import("./auth/register"),
+					},
+					{
+						path: "forgot-password",
+						lazy: () => import("./auth/forgot-password"),
+					}
+				]
 			},
 			{
 				path: "*",

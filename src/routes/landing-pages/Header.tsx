@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 const Header = () => {
   return (
@@ -16,7 +17,7 @@ const Header = () => {
             </nav>
             
             <div className="flex items-center space-x-4">
-                <button className="btn btn-outline-dark">Đăng nhập</button>
+                <Link to="/login" className="btn btn-outline-dark">Đăng nhập</Link>
             </div>
         </div>
     </header>
