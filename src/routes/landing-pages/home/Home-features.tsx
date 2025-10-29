@@ -32,11 +32,11 @@ const HomeFeatures = () => {
                 <p className="text-gray-600 max-w-2xl mx-auto">{t('features_desc')}</p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
                     features.map((feature) => (
-                        <div key={feature.id} className=":uno: bg-white border-gray-300 border p-6 rounded-xl hover:(shadow-[.25rem_.25rem_0] shadow-primary/40 border-primary) transition duration-300 group">
-                            <div className=":uno: w-14 h-14 border border-gray-300 text-gray-600 rounded-xl flex items-center justify-center mb-4 group-hover:(border-primary text-primary) transition duration-300" 
+                        <div key={feature.id} className=":uno: text-center md:text-left bg-white border-gray-300 border p-6 rounded-xl hover:(shadow-[.25rem_.25rem_0] shadow-primary/40 border-primary) transition duration-300 group">
+                            <div className=":uno: mx-a md:mx-0 w-14 h-14 border border-gray-300 text-gray-600 rounded-xl flex items-center justify-center mb-4 group-hover:(border-primary text-primary) transition duration-300" 
                             >
                                 <i className={cn("text-2xl", feature.icon)} />
                             </div>

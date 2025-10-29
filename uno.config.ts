@@ -1,8 +1,10 @@
 import { defineConfig, presetAttributify, presetTypography, presetWind4, transformerCompileClass, transformerVariantGroup } from 'unocss'
 import { presetBootstrapBtn } from './plugins/unocss/bootstrap_btn'
+import presetBootstrapGrid from './plugins/unocss/unocss-preset-bootstrap-grid'
 
 export default defineConfig({
     presets: [
+        presetBootstrapGrid(),
         presetBootstrapBtn(),
         presetAttributify(),
         presetTypography(),
