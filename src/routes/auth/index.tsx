@@ -1,8 +1,10 @@
 import React, { useMemo, useRef } from "react";
 import { LoaderFunction, Outlet, useMatches } from "react-router";
 import { Toast } from 'primereact/toast';
+import { useTranslation } from "react-i18next";
 export const Component = () => {
 	const toastRef = useRef<Toast>(null);
+	const {t} = useTranslation();
 	const matches = useMatches();
 	const matchRoute = useMemo(() => {
 		return matches[matches.length - 1];
@@ -10,6 +12,7 @@ export const Component = () => {
 
 	return (
 		<main className="flex-grow flex flex-col items-center justify-center p-4">
+			<title>{t(matchRoute.id)}</title>
 			<div className="max-w-md w-full">
 				<div className="text-center mb-8">
 					<div className="flex items-center justify-center mb-4">
