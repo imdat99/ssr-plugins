@@ -102,6 +102,7 @@ export const presetBootstrapBtn = (): Preset => ({
     // Variants
     [/^btn-(primary|secondary|success|danger|warning|info|light|dark)$/, ([, c], {theme}) => {
       const color = extractColors(theme as any).get(`${c}.DEFAULT`)
+      const colorLight = extractColors(theme as any).get(`${c}.light`) ?? `color-mix(in srgb, ${color} 85%, black)`;
       const text = ['light', 'warning'].includes(c) ? '#000' : '#fff'
 
       return [{
@@ -114,7 +115,7 @@ export const presetBootstrapBtn = (): Preset => ({
         [symbols.selector]: selector => `${selector}:hover`,
         // background: `color-mix(in srgb, ${color} 90%, black)`,
         // "border-color": `color-mix(in srgb, ${color} 85%, black)`,
-        "box-shadow": `.25rem .25rem 0 color-mix(in srgb, ${color} 85%, black 15%)`,
+        "box-shadow": `.25rem .25rem 0 ${colorLight}`,
         'transform': 'translate(-0.125rem, -0.125rem)',
       },
       {
@@ -139,6 +140,7 @@ export const presetBootstrapBtn = (): Preset => ({
     // Outline variants
     [/^btn-outline-(primary|secondary|success|danger|warning|info|light|dark)$/, ([, c], {theme}) => {
       const color = extractColors(theme as any).get(`${c}.DEFAULT`)
+      const colorLight = extractColors(theme as any).get(`${c}.light`)
 
       return [{
         'color': color,
@@ -151,7 +153,7 @@ export const presetBootstrapBtn = (): Preset => ({
         // color: '#fff',
         // "background-color": color,
         // "border-color": color,
-        'box-shadow': `0.25rem .25rem 0 ${color}`,
+        'box-shadow': `0.25rem .25rem 0 ${colorLight}`,
         'transform': 'translate(-0.125rem, -0.125rem)',
       },
     ]

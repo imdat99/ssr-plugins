@@ -2,7 +2,7 @@ import { defineConfig, presetAttributify, presetTypography, presetWind4, transfo
 import { presetBootstrapBtn } from './plugins/unocss/bootstrap_btn'
 import presetBootstrapGrid from './plugins/unocss/unocss-preset-bootstrap-grid'
 
-export default defineConfig({
+export default defineConfig<Record<string, any>>({
     presets: [
         presetBootstrapGrid(),
         presetBootstrapBtn(),
@@ -52,12 +52,17 @@ export default defineConfig({
         },
         dark: {
           DEFAULT: "#161f2d",
-          light: "#1e2129",
+          light: "#4d4d4d",
         },
         white: {
           DEFAULT: "#ffffff",
           light: "#f8f9fa",
-        }
+        },
+        light: {
+          DEFAULT: "#f8f9fa",
+          light: "#e2e6ea",
+          dark: "#e2e6ea",
+        },
       },
       boxShadow: {
         "primary-box": "2px 2px 10px #aff6b8",
@@ -77,12 +82,17 @@ export default defineConfig({
   },
   preflights: [
     {
-      getCSS: () => `
+      getCSS: (context) => { 
+        return `
       :root {
         --font-sans: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
         --font-serif: 'Playfair Display', serif, 'Times New Roman', Times, serif;
       }
-      `
+      :focus {
+        outline-color: ${context.theme.colors?.primary?.active};
+        outline-width: 1px
+      }
+      `}
     }
   ]
   // ...UnoCSS options

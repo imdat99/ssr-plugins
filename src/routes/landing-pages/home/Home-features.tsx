@@ -35,7 +35,7 @@ const HomeFeatures = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
                     features.map((feature) => (
-                        <div key={feature.id} className=":uno: text-center md:text-left bg-white border-gray-300 border p-6 rounded-xl hover:(shadow-[.25rem_.25rem_0] shadow-secondary-dark/60 border-secondary) transition duration-300 group">
+                        <div key={feature.id} className=":uno: text-center md:text-left bg-white border-gray-300 border p-6 rounded-xl hover:(shadow-[.25rem_.25rem_0] shadow-secondary-light border-secondary) transition duration-300 group">
                             <div className=":uno: mx-a md:mx-0 w-14 h-14 border border-gray-300 text-gray-600 rounded-xl flex items-center justify-center mb-4 group-hover:(border-secondary text-secondary) transition duration-300" 
                             >
                                 <i className={cn("text-2xl", feature.icon)} />

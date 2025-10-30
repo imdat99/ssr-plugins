@@ -1,23 +1,25 @@
-import React from "react";
+import { Input } from "components/ui/input";
+import { ContextType } from "lib/types";
+import { useEffect } from "react";
+import { Link, useOutletContext } from "react-router";
 
 export const Component = () => {
+	const { toastRef } = useOutletContext<ContextType>();
+	
+	console.log("toastRef: ", toastRef);
+	useEffect(() => {
+		if (toastRef && toastRef.current) {
+			toastRef.current.show({
+				severity: "info",
+				summary: "Info Message",
+				detail: "Đăng nhập để tiếp tục",
+				life: 3000,
+			});
+		}
+	}, []);
 	return (
 		<>
-			<div className="text-center mb-8">
-				<div className="flex items-center justify-center mb-4">
-					<span className="text-2xl font-bold">
-						EZ<span className="text-yellow-500">Lms</span>
-					</span>
-				</div>
-				<h1 className="text-3xl font-bold">
-					Đăng nhập tài khoản
-				</h1>
-				<p className="text-gray-600 mt-2">
-					Chào mừng trở lại! Vui lòng đăng nhập để tiếp tục
-				</p>
-			</div>
-			{/* Login Form */}
-			<div className="bg-white border border-gray-300 rounded-2xl p-8">
+			
 				<form id="loginForm">
 					{/* Email Field */}
 					<div className="mb-6">
@@ -25,30 +27,14 @@ export const Component = () => {
 							htmlFor="email"
 							className="block text-gray-700 font-medium mb-2"
 						>
-							<i className="fas fa-envelope mr-2 text-yellow-600" />
 							Email
 						</label>
-						<div className="relative">
-							<input
-								type="email"
-								id="email"
-								className="w-full px-4 py-3 border-2 border-gray-800 rounded-lg input-focus transition-all"
-								placeholder="nhập email của bạn"
-								required
-							/>
-							<div className="absolute right-3 top-3 text-gray-500">
-								<i
-									className="fas fa-check-circle hidden text-green-500"
-									id="emailValid"
-								/>
-							</div>
-						</div>
-						<p
-							className="text-red-500 text-sm mt-1 hidden"
-							id="emailError"
-						>
-							Vui lòng nhập địa chỉ email hợp lệ
-						</p>
+						<Input
+							type="email"
+							id="email"
+							placeholder="nhập email của bạn"
+							required
+						/>
 					</div>
 					{/* Password Field */}
 					<div className="mb-6">
@@ -57,55 +43,24 @@ export const Component = () => {
 								htmlFor="password"
 								className="block text-gray-700 font-medium"
 							>
-								<i className="fas fa-lock mr-2 text-yellow-600" />
 								Mật khẩu
 							</label>
-							<a
-								href="#"
-								className="text-sm text-yellow-600 hover:text-yellow-700 font-medium"
+							<Link
+								to="/forgot-password"
+								className="text-sm text-primary font-medium"
 							>
 								Quên mật khẩu?
-							</a>
+							</Link>
 						</div>
-						<div className="relative">
-							<input
-								type="password"
-								id="password"
-								className="w-full px-4 py-3 border-2 border-gray-800 rounded-lg input-focus transition-all"
-								placeholder="nhập mật khẩu của bạn"
-								required
-							/>
-							<button
-								type="button"
-								className="absolute right-3 top-3 text-gray-500"
-								id="togglePassword"
-							>
-								<i className="fas fa-eye" id="passwordIcon" />
-							</button>
-						</div>
-						<p
-							className="text-red-500 text-sm mt-1 hidden"
-							id="passwordError"
-						>
-							Mật khẩu phải có ít nhất 6 ký tự
-						</p>
+						<Input
+							type="password"
+							id="password"
+							placeholder="nhập mật khẩu của bạn"
+							required
+						/>
 					</div>
 					{/* Remember Me & Submit */}
-					<div className="flex items-center justify-between mb-6">
-						<div className="flex items-center">
-							<input
-								type="checkbox"
-								id="remember"
-								className="h-4 w-4 text-yellow-600 border-gray-800 rounded focus:ring-yellow-500"
-							/>
-							<label
-								htmlFor="remember"
-								className="ml-2 text-gray-700"
-							>
-								Ghi nhớ đăng nhập
-							</label>
-						</div>
-					</div>
+					
 					<button
 						type="submit"
 						className="btn btn-primary w-full btn-lg justify-center"
@@ -122,24 +77,22 @@ export const Component = () => {
 				</div>
 				{/* Social Login */}
 				<div className="grid grid-cols-1 gap-4 mb-6">
-					<button className="btn btn-lg btn-secondary items-center justify-center">
-						<i className="fab fa-google mr-2 text-red-500" />
+					<button className="btn btn-lg btn-outline-dark items-center justify-center">
 						<span>Google</span>
 					</button>
 				</div>
 				{/* Sign Up Link */}
 				<div className="text-center">
 					<p className="text-gray-600">
-						Chưa có tài khoản?
-						<a
-							href="#"
-							className="text-yellow-600 font-medium hover:text-yellow-700"
+						Chưa có tài khoản?&nbsp;
+						<Link
+							to="/register"
+							className="text-primary font-medium"
 						>
 							Đăng ký ngay
-						</a>
+						</Link>
 					</p>
 				</div>
-			</div>
 		</>
 	);
 };

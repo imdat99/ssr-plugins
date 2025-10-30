@@ -125,3 +125,20 @@ export function runOnClient<T extends (...args: any[]) => any>(fn: T): T {
         return fn(...args);
     }) as T;
 }
+export function generateUserIdBase64(userId: string): string {
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg'
+    width='260' height='260'
+    style='transform: rotate(-15deg); transform-origin: 50% 50%;'>
+    <text x='50%' y='50%' text-anchor='middle' alignment-baseline='middle'
+      fill='rgba(156,162,169,0.1)'
+      font-weight='normal'
+      style='font-size: 14px;'
+      font-family="'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif">
+      ${userId}
+    </text>
+  </svg>`;
+
+  const base64 = btoa(unescape(encodeURIComponent(svg)));
+
+  return `data:image/svg+xml;base64,${base64}`;
+}

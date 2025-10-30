@@ -28,14 +28,17 @@ const routes: RouteObject[] = [
 				children: [
 					{
 						path: "login",
+						id: "login",
 						lazy: () => import("./auth/login"),
 					},
 					{
 						path: "register",
+						id: "register",
 						lazy: () => import("./auth/register"),
 					},
 					{
 						path: "forgot-password",
+						id: "forgot-password",
 						lazy: () => import("./auth/forgot-password"),
 					}
 				]

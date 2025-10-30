@@ -1,6 +1,6 @@
-import React, { PropsWithChildren } from 'react'
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Outlet } from 'react-router'
+import { Outlet } from 'react-router';
 const Root: React.FC = () => {
   const { i18n } = useTranslation();
   return (
@@ -26,5 +26,5 @@ const Root: React.FC = () => {
 }
 export { ErrorBoundary } from "./ErrorBoundary";
 export { HydrateFallback } from "./HydrateFallback";
-export { Root as Component }
+export { Root as Component };
 export default Root
