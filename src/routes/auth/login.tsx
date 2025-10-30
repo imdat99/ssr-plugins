@@ -19,7 +19,14 @@ export const Component = () => {
 	}, []);
 	return (
 		<>
-			
+				<div className="text-center mb-8">
+ 					<h1 className="text-2xl font-bold">
+ 						Chào mừng trở lại!
+ 					</h1>
+ 					<p className="text-gray-600 mt-2">
+ 						Vui lòng đăng nhập để tiếp tục
+ 					</p>
+ 				</div>
 				<form id="loginForm">
 					{/* Email Field */}
 					<div className="mb-6">

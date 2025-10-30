@@ -1,7 +1,17 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router'
 
+const listLinks = [
+    { name: 'home', href: '#home' },
+    { name: 'courses', href: '#courses' },
+    { name: 'features', href: '#features' },
+    // { name: 'pricing', href: '#pricing' },
+    { name: 'contact', href: '#contact' },
+]
+
 const Header = () => {
+    const {t} = useTranslation()
   return (
     <header className="sticky top-0 z-50 border-b border-b-gray-200 bg-white">
         <div className="container mx-auto py-2 flex justify-between items-center px-4">
@@ -9,11 +19,11 @@ const Header = () => {
                 <span className="text-xl font-bold">EZ-Lms</span>
             </div>
             <nav className="hidden md:flex space-x-8">
-                <a href="#home" className="hover:text-primary">Trang chủ</a>
-                <a href="#courses" className="hover:text-primary">Khóa học</a>
-                <a href="#features" className="hover:text-primary">Tính năng</a>
-                <a href="#pricing" className="hover:text-primary">Giá cả</a>
-                <a href="#contact" className="hover:text-primary">Liên hệ</a>
+                {
+                    listLinks.map((link) => (
+                        <a key={link.name} href={link.href} className="hover:text-primary">{t(`landing-page.header.${link.name}`)}</a>
+                    ))
+                }
             </nav>
             
             <div className="flex items-center space-x-4">

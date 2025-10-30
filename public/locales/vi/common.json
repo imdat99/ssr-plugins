@@ -1,50 +1,60 @@
 {
-  "error": {
-    "title": "Ối! Đã có lỗi xảy ra.",
-    "message": "Chúng tôi đang gặp sự cố khi tải trang này. Vui lòng thử lại sau.",
-    "reloadButton": "Tải lại trang"
-  },
-  "select": {
-    "placeholder": "Chọn một tùy chọn",
-    "clearSelection": "Xóa lựa chọn",
-    "searchPlaceholder": "Tìm kiếm tùy chọn...",
-    "noOptions": "Không tìm thấy tùy chọn nào"
-  },
-  "app": {
-    "title": "Rsbuild với React",
-    "description": "Bắt đầu xây dựng những điều tuyệt vời với Rsbuild.",
-    "language": {
-      "title": "Ngôn ngữ",
-      "description": "Chọn ngôn ngữ bạn muốn sử dụng.",
-      "vi": "Tiếng Việt",
-      "en": "Tiếng Anh"
-    },
-    "theme": "Chủ đề"
-  },
-  "policy": {
-    "title": "Chính sách bảo mật",
-    "description": "Chúng tôi cam kết bảo vệ quyền riêng tư của bạn. Vui lòng đọc chính sách bảo mật của chúng tôi để biết thêm chi tiết.",
-    "acceptButton": "Đồng ý",
-    "declineButton": "Từ chối"
-  },
-  "footer": {
-    "text": "© {{year}} Xemdi. Bảo lưu mọi quyền."
-  },
-  "helper": {
-    "title": "Trợ giúp",
-    "description": "Nếu bạn cần trợ giúp, vui lòng liên hệ với chúng tôi qua email hoặc truy cập trang hỗ trợ của chúng tôi.",
-    "contactEmail": "Email hỗ trợ",
-    "supportPage": "Trang hỗ trợ",
-    "contactButton": "Liên hệ với chúng tôi",
-    "visitButton": "Truy cập trang hỗ trợ"
-  },
-  "loading": {
-    "message": "Đang tải, vui lòng đợi..."
-  },
-  "sendRequest": {
-    "title": "Gửi yêu cầu",
-    "success": "Yêu cầu đã được gửi thành công!",
-    "error": "Đã xảy ra lỗi khi gửi yêu cầu. Vui lòng thử lại."
-  },
-  "all_rights_reserved": "Bảo lưu mọi quyền."
+	"error": {
+		"title": "Ối! Đã có lỗi xảy ra.",
+		"message": "Chúng tôi đang gặp sự cố khi tải trang này. Vui lòng thử lại sau.",
+		"reloadButton": "Tải lại trang"
+	},
+	"select": {
+		"placeholder": "Chọn một tùy chọn",
+		"clearSelection": "Xóa lựa chọn",
+		"searchPlaceholder": "Tìm kiếm tùy chọn...",
+		"noOptions": "Không tìm thấy tùy chọn nào"
+	},
+	"app": {
+		"title": "Rsbuild với React",
+		"description": "Bắt đầu xây dựng những điều tuyệt vời với Rsbuild.",
+		"language": {
+			"title": "Ngôn ngữ",
+			"description": "Chọn ngôn ngữ bạn muốn sử dụng.",
+			"vi": "Tiếng Việt",
+			"en": "Tiếng Anh"
+		},
+		"theme": "Chủ đề"
+	},
+	"policy": {
+		"title": "Chính sách bảo mật",
+		"description": "Chúng tôi cam kết bảo vệ quyền riêng tư của bạn. Vui lòng đọc chính sách bảo mật của chúng tôi để biết thêm chi tiết.",
+		"acceptButton": "Đồng ý",
+		"declineButton": "Từ chối"
+	},
+	"footer": {
+		"text": "© {{year}} Xemdi. Bảo lưu mọi quyền."
+	},
+	"helper": {
+		"title": "Trợ giúp",
+		"description": "Nếu bạn cần trợ giúp, vui lòng liên hệ với chúng tôi qua email hoặc truy cập trang hỗ trợ của chúng tôi.",
+		"contactEmail": "Email hỗ trợ",
+		"supportPage": "Trang hỗ trợ",
+		"contactButton": "Liên hệ với chúng tôi",
+		"visitButton": "Truy cập trang hỗ trợ"
+	},
+	"loading": {
+		"message": "Đang tải, vui lòng đợi..."
+	},
+	"sendRequest": {
+		"title": "Gửi yêu cầu",
+		"success": "Yêu cầu đã được gửi thành công!",
+		"error": "Đã xảy ra lỗi khi gửi yêu cầu. Vui lòng thử lại."
+	},
+	"all_rights_reserved": "Bảo lưu mọi quyền.",
+	"landing-page": {
+		"header": {
+			"home": "Trang chủ",
+			"courses": "Khóa học",
+			"features": "Tính năng",
+			"pricing": "Giá cả",
+			"contact": "Liên hệ"
+		}
+	},
+  "back_to_home": "Quay về Trang chủ"
 }

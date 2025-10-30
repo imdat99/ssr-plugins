@@ -46,5 +46,15 @@
     "success": "Request sent successfully!",
     "error": "An error occurred while sending the request. Please try again."
   },
-  "all_rights_reserved": "All rights reserved."
+  "all_rights_reserved": "All rights reserved.",
+  "landing-page": {
+    "header": {
+      "home": "Home",
+      "courses": "Courses",
+      "features": "Features",
+      "pricing": "Pricing",
+      "contact": "Contact"
+    }
+  },
+  "back_to_home": "Back to Home"
 }
