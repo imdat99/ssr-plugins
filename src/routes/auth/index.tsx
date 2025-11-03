@@ -1,7 +1,8 @@
-import React, { useMemo, useRef } from "react";
-import { Link, LoaderFunction, Outlet, useMatches } from "react-router";
+import { cn } from "lib/utils";
 import { Toast } from "primereact/toast";
+import { useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
+import { Link, Outlet, useMatches } from "react-router";
 export const Component = () => {
 	const toastRef = useRef<Toast>(null);
 	const { t } = useTranslation();
@@ -9,16 +10,16 @@ export const Component = () => {
 	const matchRoute = useMemo(() => {
 		return matches[matches.length - 1];
 	}, [matches]);
-
+	const isForgot = useMemo(() => matchRoute.id === "forgot", [matchRoute]);
 	return (
 		<main className="flex-grow flex flex-col items-center justify-center p-4 relative">
 			<Link to="/" replace className="absolute top-4 left-4 text-gray-600 hover:text-primary flex items-center space-x-2">
 				<i className="fas fa-arrow-left"></i>
 				<span>{t("back_to_home")}</span>
 			</Link>
-			<title>{t(matchRoute.id)}</title>
-			<div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-				<div className="p-8 rounded-2xl hidden lg:block">
+			<title>{t(`auth:${matchRoute.id}.title`)}</title>
+			<div className={cn("w-full grid grid-cols-1 gap-8 items-center", isForgot ? "max-w-lg" : "max-w-6xl lg:grid-cols-2")}>
+				<div className={cn("p-8 rounded-2xl", isForgot ? "!hidden" : "hidden lg:block")}>
 					<div className="flex items-center mb-4">
 						<span className="text-2xl font-bold">
 							EZ<span className="text-yellow-500">Lms</span>
@@ -76,7 +77,7 @@ export const Component = () => {
 				</div>
 				<div className="bg-white border rounded-2xl p-4 lg:p-8 shadow-[.25rem_.25rem_0] shadow-primary-dark/60 border-primary">
 					<div className="flex lg:hidden items-center mb-4 text-center justify-center">
-						<span className="text-2xl font-bold">
+						<span className="text-2xl font-bold">hidden
 							EZ<span className="text-yellow-500">Lms</span>
 						</span>
 					</div>

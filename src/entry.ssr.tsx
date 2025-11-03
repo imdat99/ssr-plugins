@@ -20,7 +20,7 @@ export const renderer = async (c: Context, next: Next) => {
 	const nonce = crypto.randomUUID();
 	const router = createStaticRouter(dataRoutes, context);
 	const routeKey = router.state.matches.at(-1)?.route.id || ''
-  	const loadedData = context.loaderData[routeKey] || {}
+	const loadedData = context.loaderData[routeKey] || {}
 	// const i18n = await i18nServer(c.req.raw);
 	const html = await renderToReadableStream(
 		<SWRConfig
@@ -49,37 +49,3 @@ export const renderer = async (c: Context, next: Next) => {
 		},
 	});
 };
-// export async function i18nServer(request: Request): Promise<i18n> {
-// 	// console.log("request", request)
-// 	const context = await new Promise<RouterContextProvider>(
-//     (resolve) => {
-//       // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-//       const routerContextProvider: any = {
-//         get: (key: string) => {
-//           // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-//           return (routerContextProvider as any)[key];
-//         },
-//       };
-//       i18nextMiddleware(
-//         {
-//           request,
-//           context: {
-//             // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-//             set: (key: string, value: any) => {
-//               Object.assign(routerContextProvider, {
-//                 [key]: value,
-//               });
-//             },
-//           } as RouterContextProvider,
-//           params: {},
-//         },
-//         (() => {
-//           resolve(routerContextProvider);
-//           // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-//         }) as any
-//       );
-//     }
-//   )
-//   console.log("context", context)
-//   return getInstance(context);
-// };

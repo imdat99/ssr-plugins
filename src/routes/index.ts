@@ -38,7 +38,7 @@ const routes: RouteObject[] = [
 					},
 					{
 						path: "forgot-password",
-						id: "forgot-password",
+						id: "forgot",
 						lazy: () => import("./auth/forgot-password"),
 					}
 				]
