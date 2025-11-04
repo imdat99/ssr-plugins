@@ -4,9 +4,13 @@ import {
 	validateFn,
 } from "@hiogawa/tiny-rpc";
 import { tinyassert } from "@hiogawa/utils";
-import { type Context, type Next } from "hono";
+import { MiddlewareHandler, type Context, type Next } from "hono";
 import { getContext } from "hono/context-storage";
+import { register } from "module";
 import { z } from "zod";
+import { authMethods } from "./auth";
+import { jwt } from "hono/jwt";
+import { secret } from "./commom";
 // import { createElement } from "react";
 
 let counter = 0;
@@ -23,7 +27,11 @@ const routes = {
 		return null;
 	},
 
-	getCounter: () => counter,
+	getCounter: () => {
+		const context = getContext();
+		console.log(context.get("jwtPayload"));
+		return counter;
+	},
 
 	// define with zod validation + input type inference
 	incrementCounter: validateFn(z.object({ delta: z.number().default(1) }))(
@@ -36,8 +44,9 @@ const routes = {
 
 	// access context
 	checkAuth: () => {
+		const context = getContext();
+		console.log(context.req.raw.headers);
 		return true;
-		//   return request.headers.get("x-auth") === "good";
 	},
 	components: async () => {},
 	getHomeCourses: async () => {
@@ -81,25 +90,32 @@ const routes = {
 		];
 		return listCourses;
 	},
+	...authMethods
 };
 export type RpcRoutes = typeof routes;
-const endpoint = "/rpc";
+export const endpoint = "/rpc";
 export const pathsForGET: (keyof typeof routes)[] = ["getCounter"];
-// export const rpcServer =
-//   compose(
-//     (ctx) => {
-//       ctx.handleError = () => {
-//         return new Response(null, { status: 500 });
-//       };
-//     },
-//     contextProviderHandler(),
-//     exposeTinyRpc({
-//       routes,
-//       adapter: httpServerAdapter({ endpoint, pathsForGET }),
-//     }),
-//     () => new Response("tiny-rpc-skipped")
-//   )
+export const jwtRpc: MiddlewareHandler = async (c, next) => {
+	const publicPaths: (keyof typeof routes)[] = ["login", "register"];
+	const isPublic = publicPaths.some((path) => c.req.path.split("/").includes(path));
+	// return await next();
+	if (c.req.path !== endpoint && !c.req.path.startsWith(endpoint + "/") || isPublic) {
+		return await next();
+	}
+	console.log("JWT RPC Middleware:", c.req.path);
+	const jwtMiddleware = jwt({
+		secret,
+		cookie: 'auth_token',
+		verification: {
+			aud: "ez.lms_users",
+		}
+	})
+	return jwtMiddleware(c, next)
+}
 export const rpcServer = async (c: Context, next: Next) => {
+	if (c.req.path !== endpoint && !c.req.path.startsWith(endpoint + "/")) {
+		return await next();
+	}
 	const handler = exposeTinyRpc({
 		routes,
 		adapter: httpServerAdapter({ endpoint }),
@@ -109,9 +125,4 @@ export const rpcServer = async (c: Context, next: Next) => {
 		return res;
 	}
 	return await next();
-};
-export const createContext = (c: Context) => {
-	return {
-		request: c.req.raw,
-	};
 };

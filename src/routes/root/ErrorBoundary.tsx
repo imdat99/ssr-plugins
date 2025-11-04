@@ -1,10 +1,19 @@
+import { use } from "react";
 import {
     isRouteErrorResponse,
     useRouteError
 } from "react-router";
 export function ErrorBoundary() {
-  const error = useRouteError();
-  console.log("error.statusText:", error);
+  const rawError = useRouteError();
+  const error = use(new Promise<Error>((resolve) => {
+    let err: Error;
+    try {
+      err = JSON.parse(String((rawError as any).message));
+    } catch {
+      err = rawError as Error;
+    }
+    resolve(err);
+  }));
   let status = 500;
   let message = "An unexpected error occurred.";
 

@@ -1,3 +1,4 @@
+import { client } from 'api/rpcclient'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -11,8 +12,12 @@ const HomeHeroSection = () => {
                 <h1 className="text-4xl md:text-5xl font-bold mb-6 font-serif">{t('hero_title')}</h1>
                 <p className="text-lg mb-8 text-gray-500">{t('hero_desc')}</p>
                 <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                    <button className="btn btn-primary btn-lg justify-center">{t('hero_start')}</button>
-                    <button className="btn btn-outline-secondary btn-lg justify-center">{t('hero_view_demo')}</button>
+                    <button className="btn btn-primary btn-lg justify-center" onClick={() => {
+                         client.login("admin", "password123")
+                    }}>{t('hero_start')}</button>
+                    <button className="btn btn-outline-secondary btn-lg justify-center" onClick={() => {
+                        client.getHomeCourses();
+                    }}>{t('hero_view_demo')}</button>
                 </div>
             </div>
             <div className="col-span-1 justify-center hidden md:flex relative">
