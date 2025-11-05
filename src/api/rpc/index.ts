@@ -43,11 +43,6 @@ const routes = {
 	),
 
 	// access context
-	checkAuth: () => {
-		const context = getContext();
-		console.log(context.req.raw.headers);
-		return true;
-	},
 	components: async () => {},
 	getHomeCourses: async () => {
 		const listCourses = [
@@ -96,8 +91,9 @@ export type RpcRoutes = typeof routes;
 export const endpoint = "/rpc";
 export const pathsForGET: (keyof typeof routes)[] = ["getCounter"];
 export const jwtRpc: MiddlewareHandler = async (c, next) => {
-	const publicPaths: (keyof typeof routes)[] = ["login", "register"];
+	const publicPaths: (keyof typeof routes)[] = ["getHomeCourses", "login", "register"];
 	const isPublic = publicPaths.some((path) => c.req.path.split("/").includes(path));
+	c.set("isPublic", isPublic);
 	// return await next();
 	if (c.req.path !== endpoint && !c.req.path.startsWith(endpoint + "/") || isPublic) {
 		return await next();
@@ -116,6 +112,7 @@ export const rpcServer = async (c: Context, next: Next) => {
 	if (c.req.path !== endpoint && !c.req.path.startsWith(endpoint + "/")) {
 		return await next();
 	}
+	// c.get("redis").has(`auth_token:${}`)
 	const handler = exposeTinyRpc({
 		routes,
 		adapter: httpServerAdapter({ endpoint }),

@@ -47,6 +47,9 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
+      external: [
+        "bun"
+      ],
       output: {
         chunkFileNames: `assets/[hash].js`,
         assetFileNames: `assets/[name].[ext]`,

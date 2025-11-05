@@ -7,11 +7,11 @@ import type { RpcRoutes } from "./rpc";
 import { Result } from "@hiogawa/utils";
 declare let __host__: string;
 const endpoint = "/rpc";
-const url = import.meta.env.SSR ? __host__ : "";
+const url = import.meta.env.SSR ? "http://localhost" : "";
 const headers: Record<string, string> = {}; // inject headers to demonstrate context
 export const client = proxyTinyRpc<RpcRoutes>({
 	adapter: httpClientAdapter({
-		url: endpoint,
+		url: url + endpoint,
 		pathsForGET: [],
 	}),
 });
@@ -41,15 +41,17 @@ function httpClientAdapter(opts: {
 					headers: {
 						"content-type": "application/json; charset=utf-8",
 					},
+					credentials: "include",
 				});
 			}
 			let res: Response;
 			if (import.meta.env.SSR) {
-				// const { getContext } = await import("hono/context-storage");
-				// const c = getContext<any>();
-				// console.log(c.get("jwtPayload"));
-				// res = await c.get("fetch")(req);
-				res = await fetch(req);
+				const { getContext } = await import("hono/context-storage");
+				const c = getContext<any>();
+				Object.entries(c.req.header()).forEach(([k, v]) => {
+					req.headers.append(k, v);
+				});
+				res = await c.get("fetch")(req);
 			} else {
 				res = await fetch(req);
 			}

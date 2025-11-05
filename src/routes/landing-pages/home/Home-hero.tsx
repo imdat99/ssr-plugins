@@ -16,7 +16,7 @@ const HomeHeroSection = () => {
                          client.login("admin", "password123")
                     }}>{t('hero_start')}</button>
                     <button className="btn btn-outline-secondary btn-lg justify-center" onClick={() => {
-                        client.getHomeCourses();
+                        client.checkAuth();
                     }}>{t('hero_view_demo')}</button>
                 </div>
             </div>
