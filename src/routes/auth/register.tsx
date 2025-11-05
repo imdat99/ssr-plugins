@@ -1,6 +1,6 @@
 import { Input } from "components/ui/input";
 import { ConfirmPopup } from "primereact/confirmpopup";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { Link } from "react-router";
 
 export const Component = () => {
@@ -69,7 +69,11 @@ export const Component = () => {
 					<span>{t("register.signUp")}</span>
 					<i className="fas fa-arrow-right ml-2" />
 				</button>
-				<p className="text-xs text-gray-600 mt-4 text-center">Bằng việc đăng ký. Bạn đồng ý với các <Link to={""} className="text-primary underline italic">điều khoản</Link> của chúng tôi.</p>
+				<p className="text-xs text-gray-600 mt-4 text-center">
+				 <Trans i18nKey="auth:register.register_agreement" components={{
+					1: <Link to="" className="text-primary underline italic" />
+					}}/>
+				</p>
 			</form>
 			<div className="text-center">
 				<p className="text-gray-600">
