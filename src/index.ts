@@ -14,7 +14,7 @@ type SessionDataTypes = {
 }
 // import { renderer } from './renderer'
 const app = new Hono<HonoVarTypes>();
-const client = new RedisClient("redis://");
+const client = new RedisClient("redis://:thuc%40nh@8.219.120.11:6379/3");
 await client.connect().then(() => {
   console.log("Connected to Redis");
 }).catch((err) => {

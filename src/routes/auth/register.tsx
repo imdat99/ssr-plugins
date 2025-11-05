@@ -1,4 +1,5 @@
 import { Input } from "components/ui/input";
+import { ConfirmPopup } from "primereact/confirmpopup";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 
@@ -7,12 +8,8 @@ export const Component = () => {
 	return (
 		<>
 			<div className="text-center mb-8">
-				<h1 className="text-2xl font-bold">
-					{t("register.title")}
-				</h1>
-				<p className="text-gray-600 mt-2">
-					{t("register.subtitle")}
-				</p>
+				<h1 className="text-2xl font-bold">{t("register.title")}</h1>
+				<p className="text-gray-600 mt-2">{t("register.subtitle")}</p>
 			</div>
 			<form id="loginForm" className="mb-6">
 				{/* Email Field */}
@@ -59,27 +56,25 @@ export const Component = () => {
 					<Input
 						type="password"
 						id="repassword"
-						placeholder={t("login.passwordPlaceholder")}
+						placeholder={t("register.rePasswordPlaceholder")}
 						required
 					/>
 				</div>
 				{/* Remember Me & Submit */}
-
+				<ConfirmPopup />
 				<button
-					type="submit"
+				    type="submit"
 					className="btn btn-primary w-full btn-lg justify-center"
 				>
 					<span>{t("register.signUp")}</span>
 					<i className="fas fa-arrow-right ml-2" />
 				</button>
+				<p className="text-xs text-gray-600 mt-4 text-center">Bằng việc đăng ký. Bạn đồng ý với các <Link to={""} className="text-primary underline italic">điều khoản</Link> của chúng tôi.</p>
 			</form>
 			<div className="text-center">
 				<p className="text-gray-600">
 					{t("register.alreadyHaveAccount")}&nbsp;
-					<Link
-						to="/login"
-						className="text-primary font-medium"
-					>
+					<Link to="/login" className="text-primary font-medium">
 						{t("register.signIn")}
 					</Link>
 				</p>

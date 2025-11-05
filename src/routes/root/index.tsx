@@ -1,3 +1,5 @@
+import Tailwind from 'components/ui/passthrough';
+import { PrimeReactProvider } from 'primereact/api';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Outlet } from 'react-router';
@@ -19,7 +21,9 @@ const Root: React.FC = () => {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></link>
       </head>
       <body className="font-sans bg-gray-50 text-gray-900 antialiased flex flex-col min-h-screen">
-        <Outlet />
+        <PrimeReactProvider value={{ unstyled: true, pt: Tailwind }}>
+          <Outlet />
+        </PrimeReactProvider>
       </body>
     </html>
   )
