@@ -12,6 +12,7 @@
     "@hiogawa/tiny-rpc": "^0.2.3-pre.18",
     "@hiogawa/utils": "^1.7.0",
     "@hiogawa/utils-node": "^0.0.2",
+    "@uidotdev/usehooks": "^2.4.1",
     "clsx": "^2.1.1",
     "hono": "^4.10.3",
     "hono-sessions": "^0.8.0",

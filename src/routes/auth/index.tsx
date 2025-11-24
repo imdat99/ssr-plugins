@@ -2,14 +2,12 @@ import { cn } from "lib/utils";
 import { Toast } from "primereact/toast";
 import { useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, Outlet, useMatches } from "react-router";
+import { Link, Outlet } from "react-router";
+import { useRoute } from "lib/hooks/useRoute";
 export const Component = () => {
 	const toastRef = useRef<Toast>(null);
 	const { t } = useTranslation();
-	const matches = useMatches();
-	const matchRoute = useMemo(() => {
-		return matches[matches.length - 1];
-	}, [matches]);
+	const matchRoute = useRoute()
 	const isForgot = useMemo(() => matchRoute.id === "forgot", [matchRoute]);
 	return (
 		<main className="flex-grow flex flex-col items-center justify-center p-4 relative">

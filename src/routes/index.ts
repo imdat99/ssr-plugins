@@ -17,9 +17,25 @@ const routes: RouteObject[] = [
 								index: true,
 								lazy: () => import("./landing-pages/home"),
 							},
+							{
+								path: "courses",
+								children: [
+									{
+										index: true,
+										lazy: () => import("./landing-pages/Course/Courses-list"),
+									},
+									{
+										path: ":slug",
+										lazy: () => import("./landing-pages/Course/Course-detail"),
+									},
+									{
+										id: "lecture-view",
+										path: ":slug/learn",
+										lazy: () => import("./landing-pages/Course/Lecture-view"),
+									},
+								]
+							},
 						],
-					},
-					{
 					},
 				],
 			},

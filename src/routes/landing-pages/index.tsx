@@ -1,11 +1,17 @@
 import { Outlet } from "react-router";
 import Footer from "./Footer";
-import Header from "./Header";
+import Header from "../../components/Header";
 import { generateUserIdBase64 } from "lib/utils";
+import { useRoute } from "lib/hooks/useRoute";
+import { Activity } from "react";
 export const Component = () => {
+	const matchRoute = useRoute()
+	const isLecture = matchRoute.id === "lecture-view"
 	return (
 		<>
-			<Header />
+			<Activity mode={isLecture ? "hidden" : "visible"}>
+				<Header />
+			</Activity>
 			<main className="flex-grow">
 				<Outlet />
 			</main>
@@ -26,8 +32,9 @@ export const Component = () => {
 					zIndex: 100,
 				}}
 			/>} */}
-
-			<Footer />
+			<Activity mode={isLecture ? "hidden" : "visible"}>
+				<Footer />
+			</Activity>
 		</>
 	);
 };
