@@ -1,5 +1,6 @@
 import type { ClassValue } from "clsx";
 import { clsx } from "clsx";
+import { stableHash } from "swr/_internal";
 import { twMerge } from "tailwind-merge";
 // biome-ignore lint/suspicious/noExplicitAny: <reason>
 export function memorizeFn<T extends (...args: any[]) => any>(fn: T): T {
@@ -141,4 +142,14 @@ export function generateUserIdBase64(userId: string): string {
   const base64 = btoa(unescape(encodeURIComponent(svg)));
 
   return `data:image/svg+xml;base64,${base64}`;
+}
+
+export function tinyHash(arg: any): string {
+    const str = stableHash(arg);
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+        hash = (hash << 5) - hash + str.charCodeAt(i);
+        hash |= 0; // Chuyển sang số nguyên 32-bit
+    }
+    return Math.abs(hash).toString(36);
 }

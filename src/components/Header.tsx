@@ -2,11 +2,11 @@ import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router'
 
 const listLinks = [
-    { name: 'home', href: '#home' },
-    { name: 'courses', href: '#courses' },
-    { name: 'features', href: '#features' },
-    // { name: 'pricing', href: '#pricing' },
-    { name: 'contact', href: '#contact' },
+    { name: 'home', href: '/' },
+    { name: 'courses', href: '/courses' },
+    { name: 'features', href: '/features' },
+    // { name: 'pricing', href: '/#pricing' },
+    { name: 'contact', href: '/contact' },
 ]
 
 const Header = () => {

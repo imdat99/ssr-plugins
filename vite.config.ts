@@ -17,7 +17,7 @@ export default defineConfig({
       build: {
         outDir: "dist/ssr",
         copyPublicDir: false,
-        rollupOptions: {
+        rolldownOptions: {
           input: { index: "/src/index.ts" },
         },
       },
@@ -32,7 +32,7 @@ export default defineConfig({
       build: {
         manifest: true,
         outDir: "dist/public",
-        rollupOptions: {
+        rolldownOptions: {
           input: { index: "virtual:browser-entry" },
         },
       },
@@ -46,7 +46,7 @@ export default defineConfig({
     },
   },
   build: {
-    rollupOptions: {
+    rolldownOptions: {
       external: [
         "bun"
       ],

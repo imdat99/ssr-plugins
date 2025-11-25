@@ -4,6 +4,7 @@ import { renderToReadableStream } from "react-dom/server";
 import {
 	createStaticHandler,
 	createStaticRouter,
+	matchRoutes,
 	StaticRouterProvider,
 } from "react-router";
 import { bootstrapModules } from "virtual:ssr-assets";
@@ -25,8 +26,9 @@ export const renderer = async (c: Context, next: Next) => {
 	const html = await renderToReadableStream(
 		<SWRConfig
 			value={{
-				revalidateOnMount: false,
+				revalidateOnFocus: false,
 				revalidateIfStale: false,
+				revalidateOnReconnect: true,
 				// provider: () => new Map(),
 				...loadedData,
 			}}

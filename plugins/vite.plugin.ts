@@ -3,6 +3,7 @@ import assert from "node:assert";
 import { pathToFileURL } from "node:url";
 import path from "path";
 import {
+  parse,
     PluginOption,
     RunnableDevEnvironment,
     type Manifest,
@@ -12,6 +13,13 @@ let browserManifest: Manifest;
 let clientReferences: Record<string, string> = {}; // TODO: normalize id
 export default function viteSSRPlugin(): PluginOption[] {
   return [
+    {
+      name: "identify-client-references",
+      async transform(code, id) {
+        const ast = await parse(id, code);
+        console.log(ast.program.sourceType)
+      }
+    },
     {
       name: "ssr-middleware",
       configureServer(server) {
@@ -70,7 +78,7 @@ export default function viteSSRPlugin(): PluginOption[] {
         bootstrapModules = ["/@id/__x00__virtual:browser-entry"];
       }
       if (this.environment.mode === "build") {
-        bootstrapModules = [browserManifest["virtual:browser-entry"].file];
+        bootstrapModules = ["/" + browserManifest["virtual:browser-entry"].file];
       }
       return `export const bootstrapModules = ${JSON.stringify(
         bootstrapModules
@@ -90,6 +98,10 @@ export default function viteSSRPlugin(): PluginOption[] {
       } else {
         return `import "/src/entry.client.tsx";`;
       }
+    }),
+    createVirtualPlugin("component-id", function () {
+      // console.log("Generating component id", arguments);
+      return `export const id = "${crypto.randomUUID()}";`;
     }),
     {
       name: "misc",

@@ -1,9 +1,10 @@
 import { client } from 'api/rpcclient'
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import { Link } from 'react-router'
 import useSWR from 'swr'
 import { useDebounce } from '@uidotdev/usehooks'
-
+import CourseCard from './course-card'
+import { tinyHash } from 'lib/utils'
 const CATEGORIES = ["All", "Lập trình", "Phân tích dữ liệu", "Thiết kế", "AI/ML", "Marketing", "Ngoại ngữ", "Kỹ năng mềm", "Nghệ thuật", "Công nghệ"]
 
 export const Component = () => {
@@ -13,10 +14,9 @@ export const Component = () => {
   const debouncedSearch = useDebounce(search, 500)
 
   const { data, isLoading } = useSWR(
-    ["getCourses", page, debouncedSearch, category],
+    tinyHash(["getCourses", page, debouncedSearch, category]),
     () => client.getCourses({ page, limit: 6, search: debouncedSearch, category })
   )
-
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value)
     setPage(1) // Reset to page 1 on search
@@ -64,44 +64,9 @@ export const Component = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {data?.data?.map((course) => (
-          <Link
-            to={course.slug}
-            key={course.id}
-            className="bg-white rounded-xl overflow-hidden border border-gray-200 hover:shadow-lg hover:border-primary transition duration-300 flex flex-col h-full"
-          >
-            <div className="relative h-48 overflow-hidden">
-              <img
-                src={course.bgImg}
-                alt={course.title}
-                className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-              />
-              <div className="absolute top-4 left-4">
-                <span className="bg-white/90 backdrop-blur-sm text-primary text-xs font-bold px-3 py-1 rounded-full shadow-sm">
-                  {course.category}
-                </span>
-              </div>
-            </div>
-
-            <div className="p-6 flex flex-col flex-grow">
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="text-xl font-bold text-gray-900 line-clamp-2 hover:text-primary transition-colors">
-                  {course.title}
-                </h3>
-              </div>
-
-              <p className="text-gray-600 text-sm mb-6 line-clamp-3 flex-grow">
-                {course.description}
-              </p>
-
-              <div className="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
-                <div className="flex items-center space-x-1">
-                  <span className="text-yellow-400">★</span>
-                  <span className="font-semibold text-gray-900">{course.rating}</span>
-                </div>
-                <span className="text-primary font-bold">{course.price}</span>
-              </div>
-            </div>
-          </Link>
+          <Fragment key={course.id}>
+            <CourseCard course={course} />
+          </Fragment>
         ))}
       </div>
 

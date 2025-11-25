@@ -1,5 +1,6 @@
 import { client } from 'api/rpcclient'
-import React from 'react'
+import { useTypeId } from 'lib/hooks/useComponentId'
+import React, { useEffect, useRef } from 'react'
 import { Link, useParams } from 'react-router'
 import useSWR from 'swr'
 
@@ -7,9 +8,20 @@ export const Component = () => {
     const { slug } = useParams()
     const { data: course, isLoading, error } = useSWR(
         slug ? ["getCourseBySlug", slug] : null,
-        () => client.getCourseBySlug({ slug: slug! })
+        function (...arg) {
+            console.log(arg)
+            return client.getCourseBySlug({ slug: slug! })
+        }
     )
-
+    const componentId = useTypeId();
+    const componentId2 = useTypeId();
+    console.log("componentId", componentId)
+    console.log("componentId2", componentId2)
+    const stack = useRef(new Error());
+    console.log(stack.current.name);
+    useEffect(() => {
+        console.log("test")
+    }, [])
     if (isLoading) {
         return (
             <div className="flex justify-center items-center min-h-screen">
